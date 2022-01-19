@@ -26,3 +26,11 @@ padding: 5px;
 .fa-github:hover{
     color: black;
 }
+
+.bg-cor{
+    background: linear-gradient(to right, #8e2de2, #4a00e0)
+}
+
+.bg-cor2{
+    background-color: #582a6b;
+}
