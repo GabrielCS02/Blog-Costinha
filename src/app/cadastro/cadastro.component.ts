@@ -39,6 +39,9 @@ export class CadastroComponent implements OnInit {
     if(this.user.senha != this.confirmarSenha){
       alert("As senhas estão incorretas.")
     }else{
+
+      console.log(this.user)
+
       this.authService.cadastro(this.user).subscribe((resp: User) => {
         this.user = resp
         this.router.navigate(["/login"])
