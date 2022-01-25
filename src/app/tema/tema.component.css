@@ -8,3 +8,15 @@
 .bv{
     background-color: #F3F3F6;
 }
+
+.bt{
+    background-color: transparent;
+    border-top: violet solid 1px;
+    border-bottom: violet solid 1px;
+    
+   
+}
+.bt:hover{
+    background-color:#E79DE7;
+    text-decoration-color: aliceblue;
+}

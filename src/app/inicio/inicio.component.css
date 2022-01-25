@@ -18,3 +18,52 @@
 .ct{
     color: whitesmoke;
 }
+
+.bt{
+    background-color: transparent;
+    border-bottom: violet solid 1px;
+    border-right: violet solid 1px;
+}
+.bt:hover{
+    background-color:#d8bfd8;
+}
+
+.bt2{
+    background-color: transparent;
+    border-top: violet solid 1px;
+    border-left: violet solid 1px;
+}
+.bt2:hover{
+    background-color:#d8bfd8;
+}
+
+.link{
+    text-decoration: none;
+    
+}
+
+.btc{
+    background-color: transparent;
+    border-left: rgb(189, 71, 71) solid 1px;
+    border-right: rgb(189, 71, 71) solid 1px;
+    border-bottom: rgb(189, 71, 71) solid 1px;
+}
+
+.btc:hover{
+    background-color:red ;
+    color: white;
+
+}
+
+.btc2{
+    background-color: transparent;
+    border-left: #59bd47 solid 1px;
+    border-right: #59bd47 solid 1px;
+    border-bottom: #59bd47 solid 1px;
+}
+
+.btc2:hover{
+    background-color:green ;
+    color: white;
+
+}
