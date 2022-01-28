@@ -33,15 +33,27 @@
 
           <a class="nav-link text-secondary font-weight-bold" id="nav-temaPostagens-tab" data-toggle="tab" href="#temaPostagens" role="tab" aria-controls="nav-temaPostagens" aria-selected="false">Postagens por tema</a>
 
-          <a class="nav-link text-secondary font-weight-bold" id="nav-postagensPessoais-tab" data-toggle="tab" href="#postagensPessoais" role="tab" aria-controls="nav-postagensPessoais" aria-selected="false">Postagens Pessoais</a>
+          <a (click)='findByIdUser()'  class="nav-link text-secondary font-weight-bold" id="nav-postagensPessoais-tab" data-toggle="tab" href="#postagensPessoais" role="tab" aria-controls="nav-postagensPessoais" aria-selected="false">Postagens Pessoais</a>
 
         </div>
 
       </nav>
 
-      <div class="tab-content" id="nav-tabContent">
+      <div class="tab-content mt-5" id="nav-tabContent">
         <div class="tab-pane fade show active" id="todasPostagens" role="tabpanel" aria-labelledby="nav-nav-todasPostagens-tab">
-            Todas as postagens
+            <!-- Inicio Card Postagens -->
+          <div class="card-columns"> 
+            <div class="card text-center" *ngFor='let postagem of listaPostagens'>
+              <div class="card-body">
+                <h5 class="card-title m-0">{{postagem.titulo}}</h5>
+                <small class="text-muted"> Tema: {{postagem.tema.descricao}}</small>
+                <p class="card-text mt-3">{{postagem.texto}}</p>
+                <p class="card-text"><small class="text-muted">{{postagem.data | date: 'dd/MM/yyy'}} às {{postagem.data | date: 'HH:mm' }}</small></p>
+                <p class="card-text"><small class="text-muted">por: {{postagem.usuario.nome}}</small></p>
+              </div>
+            </div>
+          </div>
+            <!-- Fim Card Postagens -->
         </div>
 
         <div class="tab-pane fade" id="temaPostagens" role="tabpanel" aria-labelledby="nav-temaPostagens-tab">
@@ -49,7 +61,17 @@
         </div>
 
         <div class="tab-pane fade" id="postagensPessoais" role="tabpanel" aria-labelledby="nav-postagensPessoais-tab">
-            Postagens pessoais
+          <div class="card-columns"> 
+            <div class="card text-center" *ngFor='let postagem of user.postagem'>
+              <div class="card-body">
+                <h5 class="card-title m-0">{{postagem.titulo}}</h5>
+                <small class="text-muted"> Tema: {{postagem.tema.descricao}}</small>
+                <p class="card-text mt-3">{{postagem.texto}}</p>
+                <p class="card-text"><small class="text-muted">{{postagem.data | date: 'dd/MM/yyy'}} às {{postagem.data | date: 'HH:mm' }}</small></p>
+                
+              </div>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -70,23 +92,23 @@
 
           <div class="form-group">
               <label for="titulo">Título</label>
-              <input type="text" class="form-control" id="titulo" placeholder="Digite seu título">
+              <input [(ngModel)]= "postagem.titulo" type="text" class="form-control" id="titulo" placeholder="Digite seu título">
           </div>
 
             <div class="form-group">
               <label for="texto">Texto</label>
-              <textarea class="form-control" name="texto" id="text" rows="3"></textarea>
+              <textarea [(ngModel)]= "postagem.texto" class="form-control" name="texto" id="text" rows="3"></textarea>
 
               <div class="form-group">
                 <label for="tema">Escolha um tema ou <a class="link" routerLink="/tema" data-dismiss="modal">cadastre um novo</a>:</label>
-                <select name="tema" id="tema" class="form-control">
-                    <option value="">Temas</option>
+                <select name="tema" id="tema" class="form-control" [(ngModel)]="idTema" (change)="findByIdTema()">
+                    <option *ngFor='let postagem of listaTemas' value="{{postagem.id}}">{{postagem.descricao}}</option>
                 </select>
 
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btc mr-3" data-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btc2">Publicar</button>
+          <button type="button" class="btn btc2" (click)= "publicar()" data-dismiss="modal">Publicar</button>
         </div>
       </div>
     </div>
