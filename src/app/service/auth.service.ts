@@ -33,7 +33,7 @@ export class AuthService {
   }
 
   atualizar(user: User): Observable<User>{
-    return this.http.put<User>("https://blogcosta.herokuapp.com/usuarios/atualizar", user)
+    return this.http.put<User>("https://blogcosta.herokuapp.com/usuarios/atualizar", user, this.token)
   }
 
   getByIdUser(id: number): Observable<User>{
